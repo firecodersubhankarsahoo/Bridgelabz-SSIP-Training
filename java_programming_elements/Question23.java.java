@@ -1,5 +1,5 @@
 import java.util.*;
-public class Handshakes{
+public class Question23{
 	public static void main(String args[]){
 		Scanner sc=new Scanner(System.in);
 		int numberOfstudents=sc.nextInt();

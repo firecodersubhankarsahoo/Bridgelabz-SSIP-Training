@@ -1,5 +1,5 @@
 import java.util.*;
-public class kilometer_to_miles{
+public class Question4{
 	public static void main(String arge[]){
 		Scanner sc=new Scanner(System.in);
 		double kilometer=sc.nextDouble();

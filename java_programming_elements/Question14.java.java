@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class doubleOpt{
+public class Question14{
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
         System.out.print("enter a:");

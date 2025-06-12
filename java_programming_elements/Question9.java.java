@@ -1,5 +1,5 @@
 import java.util.Scanner;
-class Height_Conversion{
+class Question9{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
 		int cm = sc.nextInt();

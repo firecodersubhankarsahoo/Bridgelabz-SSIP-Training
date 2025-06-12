@@ -1,4 +1,4 @@
-public class Vol_Of_Earth{
+public class Question3{
 	public static void main(String args[]){
 		int radius_in_km=6378;
 		double radius_in_miles=radius_in_km*1.6;

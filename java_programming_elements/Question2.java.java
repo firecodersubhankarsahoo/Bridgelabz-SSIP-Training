@@ -1,4 +1,4 @@
-public class Pen_Division{
+public class Pen_Question2{
 	public static void main(String args[]){
 		int numberOfpens=14;
 		int numberOfstudents=3;
