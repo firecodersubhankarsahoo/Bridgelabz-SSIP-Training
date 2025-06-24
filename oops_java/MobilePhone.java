@@ -3,6 +3,7 @@ public class MobilePhone {
     String model;
     double price;
 
+
     public MobilePhone(String brand, String model, double price) {
         this.brand = brand;
         this.model = model;
