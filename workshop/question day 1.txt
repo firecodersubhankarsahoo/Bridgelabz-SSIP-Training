@@ -5,3 +5,20 @@ Problem Requirements:
 ● Use methods to compare answers, calculate scores, and return grade.
 ● Store scores of multiple users in a List<Integer>.
 ● Validate input (length mismatch) and throw an InvalidQuizSubmissionException.
+
+
+
+
+Flight Booking System
+Scenario: Simulate a basic flight booking system where users can search flights, book them,
+and view booking details.
+Problem Requirements:
+● Use Array to store available flight data.
+● Store user bookings in a List.
+● Use String operations to allow case-insensitive flight search.
+● Use methods for searching, booking, and displaying bookings.
+
+
+
+
+
