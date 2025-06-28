@@ -1,0 +1,7 @@
+Online Quiz Platform – Result Processor
+Scenario: A quiz platform processes user answers and compares them to correct answers.
+Problem Requirements:
+● Use String[] for correct answers and user answers.
+● Use methods to compare answers, calculate scores, and return grade.
+● Store scores of multiple users in a List<Integer>.
+● Validate input (length mismatch) and throw an InvalidQuizSubmissionException.
