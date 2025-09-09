@@ -1,0 +1,71 @@
+Class Pet
+	Attributes Name, Age, Breed
+	Constructor(Name, Age, Breed)
+		Set this.Name=Name
+		Set this.Age=Age
+		Set this.Breed=Breed
+	Method displayDetail
+		SOP(Name)
+		SOP(Age)
+		SOP(Breed)
+
+Class Dog Inherits Pet
+	Attribute Bark
+	Constructor(Name,Age,Breed,Bark)
+		Set this.Name=Name
+		Set this.Age=Age
+		Set this.Breed=Breed
+		Set this.Bark=Bark
+	Method displayDetail
+		SOP(Name)
+		SOP(Age)
+		SOP(Breed)
+		SOP(Bark)
+
+Class Cat Inherits Pet
+	Attribute Meow
+	Constructor(Name,Age,Breed,Meow)
+		Set this.Name=Name
+		Set this.Age=Age
+		Set this.Breed=Breed
+		Set this.Meow=Meow
+	Method displayDetail
+		SOP(Name)
+		SOP(Age)
+		SOP(Breed)
+		SOP(Meow)
+
+Class Bird Inherits Pet
+	Attribute Chirp
+	Constructor(Name,Age,Breed,Chirp)
+		Set this.Name=Name
+		Set this.Age=Age
+		Set this.Breed=Breed
+		Set this.Chirp=Chirp
+	Method displayDetail
+		SOP(Name)
+		SOP(Age)
+		SOP(Breed)
+		SOP(Chirp)
+
+
+
+
+Class Member
+	Attributes Name, ID, memberShipDate
+	Constructor(Name,ID,memberShipDate)
+		Set this.Name=Name
+		Set this.ID=ID
+		Set this.memberShipDate=memberShipDate
+	Method displayInfo
+		SOP(Name)
+		SOP(ID)
+		SOP(memberShipDate)
+	Method CheckValidity
+		IF CurrentDate-memberShipDate>30
+			SOP("membership ended")
+		
+
+
+
+	

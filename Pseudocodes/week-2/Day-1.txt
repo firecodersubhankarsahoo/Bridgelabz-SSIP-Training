@@ -1,0 +1,144 @@
+Online Exam Portal
+Class User
+    Attributes: username, password
+    Method login()
+        SOP("Base login - to be overridden")
+
+Class Student extends User
+    Attribute: enrolledCourses
+    Method login()
+        IF credentials valid AND enrolledCourses not empty
+            SOP("Student login successful → Show exams")
+        ELSE
+            SOP("Access denied → Not enrolled")
+
+Class Admin extends User
+    Attribute: adminPrivileges
+    Method login()
+        IF credentials valid AND adminPrivileges = true
+            SOP("Admin login successful → Show exam management tools")
+        ELSE
+            SOP("Access denied → Not an admin")
+
+
+
+
+Movie Ticket Booking
+Class Ticket
+    Attributes: movieName, seatNo, price, status
+    Constructor(movieName, seatNo, price)
+        status = "Booked"
+    Method cancel()
+        status = "Cancelled"
+
+Class Theatre
+    Attributes: movieSchedule, availableSeats, tickets
+    Method issueTicket(movieName, seatNo, price)
+        IF seatNo in availableSeats
+            ticket = new Ticket(movieName, seatNo, price)
+            tickets.add(ticket)
+            availableSeats.remove(seatNo)
+            Return ticket
+        ELSE
+            SOP("Seat not available")
+    Method cancelTicket(ticket)
+        ticket.cancel()
+        availableSeats.add(ticket.seatNo)
+
+Class Customer
+    Attributes: name
+    Method bookTicket(theatre, movieName, seatNo, price)
+        Return theatre.issueTicket(movieName, seatNo, price)
+    Method cancelTicket(theatre, ticket)
+        theatre.cancelTicket(ticket)
+
+
+
+
+Bus Route Navigator
+Class Node
+    Attributes: stopName, next
+
+Class BusRoute
+    Attribute: head
+    Method addStop(afterStop, newStop)
+        Traverse until afterStop found
+        Insert new Node(newStop) after it
+    Method removeStop(stopName)
+        Traverse and unlink node
+    Method searchStop(stopName)
+        Traverse until found
+        Return true/false
+    Method displayRoute()
+        Print all stops in order
+
+
+
+
+Attendance Marker
+Class AttendanceSystem
+    Attribute: attendance[students][days]
+    Method markAttendance(studentId, day, status)
+        attendance[studentId][day] = status
+    Method updateAttendance(studentId, day, newStatus)
+        attendance[studentId][day] = newStatus
+    Method generateReport(studentId)
+        count = 0
+        FOR each day
+            IF attendance[studentId][day] == 'P'
+                count++
+        SOP("Student " + studentId + " Present Days: " + count)
+
+
+
+
+
+
+Daily Tasks Organizer
+Class TaskOrganizer
+    Attribute: tasks (LinkedHashMap<Integer,String>)
+    Attribute: taskCounter = 0
+    Method addTask(description)
+        taskCounter++
+        tasks.put(taskCounter, description)
+    Method removeTask(taskId)
+        tasks.remove(taskId)
+    Method viewTasks()
+        FOR each entry in tasks
+            SOP(entry.key + " → " + entry.value)
+
+
+
+
+Simple Word Counter
+Class WordCounter
+    Method countWords(text)
+        words = split text by spaces
+        Map<String,Integer> freq = new HashMap
+        FOR each word in words
+            word = toLowerCase(removePunctuation(word))
+            freq[word] = freq.getOrDefault(word,0) + 1
+        Sort freq by value (descending)
+        SOP(freq)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

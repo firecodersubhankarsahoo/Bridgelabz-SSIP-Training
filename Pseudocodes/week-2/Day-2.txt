@@ -1,0 +1,128 @@
+Online Exam Portal
+Class User
+    Attributes: username, password
+    Method login()
+        SOP("Base login - override in subclasses")
+
+Class Student extends User
+    Attribute: enrolledCourses
+    Method login()
+        IF credentials valid AND enrolledCourses not empty
+            SOP("Student login successful → Show exams")
+        ELSE
+            SOP("Access denied: Not enrolled or invalid")
+
+Class Admin extends User
+    Attribute: adminPrivileges
+    Method login()
+        IF credentials valid AND adminPrivileges = true
+            SOP("Admin login successful → Show exam management tools")
+        ELSE
+            SOP("Access denied: Not admin")
+
+
+
+
+Parking Lot Ticketing System
+Class Vehicle
+    Attributes: vehicleNumber, entryTime
+    Method calculateFee(exitTime)
+        SOP("Base fee logic")
+
+Class Car extends Vehicle
+    Method calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 50 + (hours - 1) * 30
+        Return fee
+
+Class Bike extends Vehicle
+    Method calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 20 + (hours - 1) * 10
+        Return fee
+
+Class Truck extends Vehicle
+    Method calculateFee(exitTime)
+        hours = ceil(exitTime - entryTime in hours)
+        fee = 100 + (hours - 1) * 50
+        Return fee
+
+
+
+
+Bus Route Navigator
+Class Node
+    Attributes: stopName, next
+
+Class BusRoute
+    Attribute: head
+    Method addStop(afterStop, newStop)
+        Traverse until afterStop found
+        Insert new Node(newStop) after it
+    Method removeStop(stopName)
+        Traverse and unlink node
+    Method searchStop(stopName)
+        Traverse list
+        IF found → return true ELSE false
+    Method displayRoute()
+        Print all stops in sequence
+
+
+
+
+Attendance Marker
+Class AttendanceSystem
+    Attribute: attendance[students][days]
+    Method markAttendance(studentId, day, status)
+        attendance[studentId][day] = status
+    Method dailySummary(day)
+        count = number of 1s in column(day)
+        SOP("Students present on Day " + day + " = " + count)
+    Method monthlySummary(studentId)
+        total = sum of row(studentId)
+        SOP("Student " + studentId + " Present Days = " + total)
+    Method defaulterList()
+        FOR each student row
+            presentDays = sum of row
+            IF presentDays < (0.75 * totalDays)
+                SOP("Defaulter: Student " + id)
+
+
+
+
+
+Word Counter
+Class WordCounter
+    Method countWords(text)
+        words = split text into words
+        Map<String,Integer> freq
+        FOR word in words
+            cleanWord = toLowerCase(removePunctuation(word))
+            freq[cleanWord] = freq.getOrDefault(cleanWord,0) + 1
+        Sort freq by value (descending)
+        SOP(freq)
+
+
+
+
+Online Survey Report Generator
+Class SurveyResponse
+    Attributes: restaurantName, rating
+
+Class SurveyAnalyzer
+    Method generateReport(responses)
+        Map<String, List<Integer>> groupedByRestaurant
+        FOR each response
+            groupedByRestaurant[restaurant].add(rating)
+        FOR each restaurant
+            avg = average(ratings)
+            SOP(restaurant + " → " + avg)
+
+
+
+
+
+
+
+
+

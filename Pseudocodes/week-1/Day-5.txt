@@ -1,0 +1,184 @@
+Healthcare Diagnosis Engine
+Interface DiagnosisStrategy
+    Method diagnose(symptoms)
+
+Class RuleBasedDiagnosis Implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        IF symptoms contain ["fever","cough","fatigue"]
+            SOP("Possible: Flu or COVID-19")
+
+Class AIBasedDiagnosis Implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        IF symptoms contain ["headache","dizziness","nausea"]
+            SOP("Possible: Migraine or Vertigo")
+
+Class ProbabilityBasedDiagnosis Implements DiagnosisStrategy
+    Method diagnose(symptoms)
+        SOP("Probability-based diagnosis applied on symptoms: " + symptoms)
+
+Class DiagnosisContext
+    Attribute strategy (DiagnosisStrategy)
+    Method setStrategy(strategy)
+        this.strategy = strategy
+    Method executeDiagnosis(symptoms)
+        strategy.diagnose(symptoms)
+
+
+
+
+Restaurant POS Billing System
+Interface TaxCalculator
+    Method calculateTax(amount)
+
+Class FoodTax Implements TaxCalculator
+    Method calculateTax(amount)
+        Return amount * 0.05
+
+Class BeverageTax Implements TaxCalculator
+    Method calculateTax(amount)
+        Return amount * 0.12
+
+Class ImportedTax Implements TaxCalculator
+    Method calculateTax(amount)
+        Return (amount * 0.05) + customsDuty
+
+# Easily extend with new taxes
+Class LuxuryTax Implements TaxCalculator
+    Method calculateTax(amount)
+        Return amount * 0.20
+
+Interface DiscountPolicy
+    Method applyDiscount(total)
+
+Class NoDiscount Implements DiscountPolicy
+    Method applyDiscount(total)
+        Return total
+
+Class FlatDiscount Implements DiscountPolicy
+    Attribute flatAmount
+    Constructor(flatAmount)
+        this.flatAmount = flatAmount
+    Method applyDiscount(total)
+        Return total - flatAmount
+
+Class PercentageDiscount Implements DiscountPolicy
+    Attribute percent
+    Constructor(percent)
+        this.percent = percent
+    Method applyDiscount(total)
+        Return total - (total * percent / 100)
+
+Class BillingSystem
+    Attribute items (List of <Item, TaxCalculator>)
+    Attribute discountPolicy
+    Method addItem(item, taxCalculator)
+        items.add(item, taxCalculator)
+    Method setDiscount(discountPolicy)
+        this.discountPolicy = discountPolicy
+    Method generateBill()
+        total = 0
+        FOR each (item, taxCalculator) in items
+            tax = taxCalculator.calculateTax(item.price)
+            total = total + item.price + tax
+        total = discountPolicy.applyDiscount(total)
+        SOP("Final Bill: " + total)
+
+
+
+
+Distributed Load Balancer 
+Class LoadBalancer
+    Attribute queue (Queue of servers)
+
+    Method addServer(server)
+        queue.enqueue(server)
+
+    Method removeServer(server)
+        queue.remove(server)
+
+    Method assignRequest(request)
+        server = queue.dequeue()
+        SOP(request + " → " + server)
+        queue.enqueue(server)
+
+
+
+Autocomplete Search Suggestions
+Class TrieNode
+    Attributes children (Map<char, TrieNode>)
+               isEndOfWord
+               popularity
+
+Class Trie
+    Attribute root
+    Constructor()
+        root = new TrieNode()
+
+    Method insert(word, popularity)
+        node = root
+        FOR each char in word
+            IF char not in node.children
+                node.children[char] = new TrieNode()
+            node = node.children[char]
+        node.isEndOfWord = True
+        node.popularity = popularity
+
+    Method search(prefix)
+        node = root
+        FOR each char in prefix
+            IF char not in node.children
+                Return empty
+            node = node.children[char]
+        Return collectSuggestions(node)
+
+    Method collectSuggestions(node)
+        suggestions = []
+        DFS(node, word, suggestions)
+        Sort suggestions by popularity
+        Return top N suggestions
+
+
+
+
+Smart Grid Energy Usage Tracker
+Class Reading
+    Attribute value (kW)
+
+Class SmartGrid
+    Attribute data (Map<Zone, Map<Day, List<Reading>>>)
+
+    Method addReading(zone, day, reading)
+        IF zone not in data
+            data[zone] = new Map
+        IF day not in data[zone]
+            data[zone][day] = new List
+        data[zone][day].add(reading)
+
+    Method generatePeakReport()
+        FOR each zone in data
+            FOR each day in data[zone]
+                readings = data[zone][day]
+                peak = max(readings)
+                SOP("Zone: " + zone + " Day: " + day + " Peak: " + peak)
+
+
+
+
+Employee Bonus Distribution Engine
+Class Employee
+    Attributes name, department, rating, baseSalary
+
+Class BonusEngine
+    Attribute employees (List<Employee>)
+
+    Method distributeBonuses()
+        Group employees by department
+        FOR each department
+            totalSalary = sum of baseSalary
+            pool = totalSalary * 0.10
+            totalRating = sum of ratings
+            FOR each employee in department
+                share = (employee.rating / totalRating) * pool
+                SOP(employee.name + " Bonus: " + share)
+
+

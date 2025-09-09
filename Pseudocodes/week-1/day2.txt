@@ -1,0 +1,91 @@
+
+// Traffic Signal Simulation
+Enum TrafficLight { RED, GREEN, YELLOW }
+Class Signal {
+    Attribute current
+    Constructor(current) { this.current=current }
+    Method changeLight {
+        IF current==RED THEN current=GREEN
+        ELSE IF current==GREEN THEN current=YELLOW
+        ELSE current=RED
+    }
+}
+
+// Smart Farming System
+Abstract Class Crop {
+    Attribute name
+    Constructor(name) { this.name=name }
+    Abstract Method waterRequirement
+    Abstract Method harvest
+}
+Class Rice Inherits Crop {
+    Constructor(name) { super(name) }
+    Method waterRequirement { SOP("High water needed") }
+    Method harvest { SOP("Harvesting rice") }
+}
+Class Wheat Inherits Crop {
+    Constructor(name) { super(name) }
+    Method waterRequirement { SOP("Moderate water needed") }
+    Method harvest { SOP("Harvesting wheat") }
+}
+
+// Online Quiz Timer
+Class QuizTimer {
+    Attribute slots[], current
+    Constructor(size) { slots=new Array[size]; current=0 }
+    Method nextSlot {
+        current=(current+1)%slots.length
+        IF current==slots.length-1 THEN SOP("Warning: Time ending")
+    }
+}
+
+// Job Scheduler
+Class Job {
+    Attribute name, deadline, time
+    Constructor(name,deadline,time){this.name=name;this.deadline=deadline;this.time=time}
+}
+Class JobScheduler {
+    Attribute queue
+    Method addJob(job) { queue.add(job) }
+    Method schedule { sort queue by deadline and time; SOP("Jobs scheduled") }
+}
+
+// Online Store Cart System
+Class Cart {
+    Attribute items
+    Constructor() { items=new List }
+    Method add(item) { items.add(item) }
+    Method display { FOR each i in items SOP(i) }
+}
+
+// Pet Inheritance
+Class Pet {
+    Attribute Name, Age, Breed
+    Constructor(Name,Age,Breed) { this.Name=Name;this.Age=Age;this.Breed=Breed }
+    Method displayDetail { SOP(Name);SOP(Age);SOP(Breed) }
+}
+Class Dog Inherits Pet {
+    Attribute Bark
+    Constructor(Name,Age,Breed,Bark){this.Name=Name;this.Age=Age;this.Breed=Breed;this.Bark=Bark}
+    Method displayDetail { SOP(Name);SOP(Age);SOP(Breed);SOP(Bark) }
+}
+Class Cat Inherits Pet {
+    Attribute Meow
+    Constructor(Name,Age,Breed,Meow){this.Name=Name;this.Age=Age;this.Breed=Breed;this.Meow=Meow}
+    Method displayDetail { SOP(Name);SOP(Age);SOP(Breed);SOP(Meow) }
+}
+Class Bird Inherits Pet {
+    Attribute Chirp
+    Constructor(Name,Age,Breed,Chirp){this.Name=Name;this.Age=Age;this.Breed=Breed;this.Chirp=Chirp}
+    Method displayDetail { SOP(Name);SOP(Age);SOP(Breed);SOP(Chirp) }
+}
+
+// Member Class
+Class Member {
+    Attribute Name, ID, memberShipDate
+    Constructor(Name,ID,memberShipDate){this.Name=Name;this.ID=ID;this.memberShipDate=memberShipDate}
+    Method displayInfo { SOP(Name);SOP(ID);SOP(memberShipDate) }
+    Method checkValidity {
+        IF CurrentDate-memberShipDate>30 THEN SOP("membership ended")
+    }
+}

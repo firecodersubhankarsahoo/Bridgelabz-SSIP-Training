@@ -1,0 +1,188 @@
+Banking Portal
+Class Account
+    Attributes accountNumber, balance
+    Constructor(accountNumber, balance)
+        Set this.accountNumber = accountNumber
+        Set this.balance = balance
+    Method withdraw(amount)
+        IF balance >= amount
+            balance = balance - amount
+            SOP("Withdrawn " + amount)
+        ELSE
+            SOP("Insufficient Balance")
+    Method displayBalance
+        SOP(balance)
+
+Class SavingAccount Inherits Account
+    Attribute withdrawalLimit
+    Constructor(accountNumber, balance, withdrawalLimit)
+        Call super(accountNumber, balance)
+        Set this.withdrawalLimit = withdrawalLimit
+    Method withdraw(amount)
+        IF amount <= withdrawalLimit AND balance >= amount
+            balance = balance - amount
+            SOP("Saving Account Withdrawn " + amount)
+        ELSE
+            SOP("Withdrawal Denied")
+
+Class CurrentAccount Inherits Account
+    Attribute overdraftLimit
+    Constructor(accountNumber, balance, overdraftLimit)
+        Call super(accountNumber, balance)
+        Set this.overdraftLimit = overdraftLimit
+    Method withdraw(amount)
+        IF balance + overdraftLimit >= amount
+            balance = balance - amount
+            SOP("Current Account Withdrawn " + amount)
+        ELSE
+            SOP("Withdrawal Denied")
+
+
+
+
+
+Vehicle Rental System
+Interface Rentable
+    Method rent()
+    Method returnVehicle()
+
+Abstract Class Vehicle Implements Rentable
+    Attributes vehicleID, brand, rentPerDay
+    Constructor(vehicleID, brand, rentPerDay)
+        Set this.vehicleID = vehicleID
+        Set this.brand = brand
+        Set this.rentPerDay = rentPerDay
+    Abstract Method rent()
+    Abstract Method returnVehicle()
+
+Class Car Inherits Vehicle
+    Method rent()
+        SOP("Car Rented: " + vehicleID)
+    Method returnVehicle()
+        SOP("Car Returned: " + vehicleID)
+
+Class Bike Inherits Vehicle
+    Method rent()
+        SOP("Bike Rented: " + vehicleID)
+    Method returnVehicle()
+        SOP("Bike Returned: " + vehicleID)
+
+Class VehicleFactory
+    Method createVehicle(type, vehicleID, brand, rentPerDay)
+        IF type == "Car"
+            Return new Car(vehicleID, brand, rentPerDay)
+        IF type == "Bike"
+            Return new Bike(vehicleID, brand, rentPerDay)
+
+
+
+
+Flight Price Analyzer
+Class Flight
+    Attributes flightID, price, duration
+    Constructor(flightID, price, duration)
+        Set this.flightID = flightID
+        Set this.price = price
+        Set this.duration = duration
+
+Class FlightComparator
+    Method compare(f1, f2)
+        IF f1.price < f2.price
+            Return -1
+        ELSE IF f1.price > f2.price
+            Return 1
+        ELSE
+            IF f1.duration < f2.duration
+                Return -1
+            ELSE
+                Return 1
+
+Class FlightAnalyzer
+    Method mergeSort(flights[], low, high, comparator)
+        IF low < high
+            mid = (low + high) / 2
+            mergeSort(flights, low, mid, comparator)
+            mergeSort(flights, mid+1, high, comparator)
+            merge(flights, low, mid, high, comparator)
+
+
+
+
+
+
+Crime Prediction Heatmap
+Class Zone
+    Attributes zoneID, crimeRate
+    Constructor(zoneID, crimeRate)
+        Set this.zoneID = zoneID
+        Set this.crimeRate = crimeRate
+
+Class CityGraph
+    Attributes adjacencyList (Map<Zone, List<Zone>>)
+    Method addZone(zone)
+        adjacencyList.put(zone, emptyList)
+    Method connectZones(zone1, zone2)
+        adjacencyList[zone1].add(zone2)
+        adjacencyList[zone2].add(zone1)
+
+    Method dfs(zone, visited, threshold)
+        Mark visited[zone] = True
+        IF zone.crimeRate > threshold
+            SOP("High risk zone: " + zone.zoneID)
+        FOR each neighbor in adjacencyList[zone]
+            IF not visited[neighbor]
+                dfs(neighbor, visited, threshold)
+
+
+
+
+College Course Registration
+Class Student
+    Attributes studentID, name
+    Constructor(studentID, name)
+        Set this.studentID = studentID
+        Set this.name = name
+
+Class Course
+    Attributes courseID, courseName
+    Constructor(courseID, courseName)
+        Set this.courseID = courseID
+        Set this.courseName = courseName
+
+Class Registration
+    Attribute courseMap (Map<Course, List<Student>>)
+    Method registerStudent(course, student)
+        IF course not in courseMap
+            courseMap.put(course, new List)
+        courseMap[course].add(student)
+    Method displayRegistrations()
+        FOR each course in courseMap
+            SOP(course.courseName)
+            FOR each student in courseMap[course]
+                SOP(student.name)
+
+
+
+
+Digital Wallet Transactions Report
+Class Transaction
+    Attributes transactionID, merchant, month, amount
+    Constructor(transactionID, merchant, month, amount)
+        Set this.transactionID = transactionID
+        Set this.merchant = merchant
+        Set this.month = month
+        Set this.amount = amount
+
+Class WalletReport
+    Attribute transactions (List<Transaction>)
+    Method generateReport()
+        Group transactions BY merchant, then BY month
+        FOR each merchant in groupedData
+            SOP("Merchant: " + merchant)
+            FOR each month in groupedData[merchant]
+                total = sum of amounts in groupedData[merchant][month]
+                SOP("Month: " + month + " Total: " + total)
+
+
+
+

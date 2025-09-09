@@ -1,0 +1,192 @@
+Food Delivery System
+Class Customer
+    Attributes Name, Address, Phone
+    Constructor(Name, Address, Phone)
+        Set this.Name = Name
+        Set this.Address = Address
+        Set this.Phone = Phone
+    Method displayCustomer
+        SOP(Name)
+        SOP(Address)
+        SOP(Phone)
+
+Class Restaurant
+    Attributes Name, Location, Rating
+    Constructor(Name, Location, Rating)
+        Set this.Name = Name
+        Set this.Location = Location
+        Set this.Rating = Rating
+    Method displayRestaurant
+        SOP(Name)
+        SOP(Location)
+        SOP(Rating)
+
+Class DeliveryBoy
+    Attributes Name, ID, Phone
+    Constructor(Name, ID, Phone)
+        Set this.Name = Name
+        Set this.ID = ID
+        Set this.Phone = Phone
+    Method displayDeliveryBoy
+        SOP(Name)
+        SOP(ID)
+        SOP(Phone)
+
+Class Order
+    Attributes OrderID, Customer, Restaurant, DeliveryBoy
+    Constructor(OrderID, Customer, Restaurant, DeliveryBoy)
+        Set this.OrderID = OrderID
+        Set this.Customer = Customer
+        Set this.Restaurant = Restaurant
+        Set this.DeliveryBoy = DeliveryBoy
+    Method displayOrder
+        SOP(OrderID)
+        Customer.displayCustomer()
+        Restaurant.displayRestaurant()
+        DeliveryBoy.displayDeliveryBoy()
+
+
+Medical Record Manager
+Interface Searchable
+    Method search(keyword)
+
+Interface Printable
+    Method print()
+
+Class PatientRecord Implements Searchable, Printable
+    Attributes PatientID, Name, Diagnosis
+    Constructor(PatientID, Name, Diagnosis)
+        Set this.PatientID = PatientID
+        Set this.Name = Name
+        Set this.Diagnosis = Diagnosis
+    Method search(keyword)
+        IF Name contains keyword OR Diagnosis contains keyword
+            Return True
+        Else
+            Return False
+    Method print()
+        SOP(PatientID)
+        SOP(Name)
+        SOP(Diagnosis)
+
+Class Report Implements Printable
+    Attributes ReportID, Type, Content
+    Constructor(ReportID, Type, Content)
+        Set this.ReportID = ReportID
+        Set this.Type = Type
+        Set this.Content = Content
+    Method print()
+        SOP(ReportID)
+        SOP(Type)
+        SOP(Content)
+
+
+
+Patient Record Hashing
+Class Patient
+    Attributes ID, Name, Age
+    Constructor(ID, Name, Age)
+        Set this.ID = ID
+        Set this.Name = Name
+        Set this.Age = Age
+
+Class PatientRecordManager
+    Attribute records (HashMap<ID, Patient>)
+    Method addPatient(patient)
+        records.put(patient.ID, patient)
+    Method getPatient(ID)
+        Return records.get(ID)
+    Method updatePatient(ID, newPatient)
+        records.put(ID, newPatient)
+    Method deletePatient(ID)
+        records.remove(ID)
+
+
+Maze Solver Bot
+Class MazeSolver
+    Attributes maze[ ][ ], visited[ ][ ], rows, cols
+    Method solve(x, y)
+        IF x,y is outside maze OR blocked OR visited
+            Return False
+        IF x,y is destination
+            Return True
+        Mark visited[x][y] = True
+        IF solve(x+1,y) OR solve(x-1,y) OR solve(x,y+1) OR solve(x,y-1)
+            Return True
+        Unmark visited[x][y]
+        Return False
+
+
+Library Book Filter
+Class Book
+    Attributes Title, Year, Rating
+    Constructor(Title, Year, Rating)
+        Set this.Title = Title
+        Set this.Year = Year
+        Set this.Rating = Rating
+    Method displayBook
+        SOP(Title)
+        SOP(Year)
+        SOP(Rating)
+
+Class Library
+    Attribute Books (List<Book>)
+    Method filterBooks
+        FOR each book in Books
+            IF book.Year > 2015 AND book.Rating > 4.5
+                SOP(book.Title + " " + book.Rating)
+
+
+Payment Processor
+Interface Payment
+    Method process(amount)
+
+Class UpiPayment Implements Payment
+    Method process(amount)
+        SOP("Processing UPI Payment of " + amount)
+
+Class CardPayment Implements Payment
+    Method process(amount)
+        SOP("Processing Card Payment of " + amount)
+
+Class NetBankingPayment Implements Payment
+    Method process(amount)
+        SOP("Processing NetBanking Payment of " + amount)
+
+Class PaymentProcessor
+    Method makePayment(Payment p, amount)
+        p.process(amount)
+
+
+
+
+Generic Transaction
+Class Transaction<T>
+    Attribute transactionID, method (T), amount
+    Constructor(transactionID, method, amount)
+        Set this.transactionID = transactionID
+        Set this.method = method
+        Set this.amount = amount
+    Method displayTransaction
+        SOP(transactionID)
+        SOP(method)
+        SOP(amount)
+
+Class UPI
+    Attribute upiID
+    Constructor(upiID)
+        Set this.upiID = upiID
+
+Class Card
+    Attribute cardNumber
+    Constructor(cardNumber)
+        Set this.cardNumber = cardNumber
+
+Class NetBanking
+    Attribute bankName
+    Constructor(bankName)
+        Set this.bankName = bankName
+
+
+
+
